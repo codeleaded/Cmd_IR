@@ -1,0 +1,13 @@
+// IR Code like ASM for Optimisations
+// Can be translated for example in the .salx language
+
+extern i32 print(i8* s);
+
+i32 add(i32 a,i32 b){
+    return a + b;
+}
+
+i32 main(i32 argc,i8** argv){
+    return 0;
+}
+    

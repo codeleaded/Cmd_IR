@@ -1,2 +1,34 @@
 // IR Code like ASM for Optimisations
 // Can be translated to other Languages
+
+extern print i32,i8*
+
+fn add i32 r,i32 a,i32 b
+    MAKE i32 c
+    ADD i32 c,a,b
+    MOV i32 r,c
+    RET
+
+fn main i32,i32 argc,i8** argv
+    MAKE i32 a
+    MOV i32 a,0
+
+    MAKE i32 b
+    MOV i32 a,1
+
+    MAKE i32 c
+
+    MAKE i32 r
+    CALL add r,a,b
+    
+    MOV i32 c,r
+    KILL r
+
+    CMP i32 r,0
+    JE IF0
+
+    CALL print ,"Hello World"
+
+    TARGET IF0
+
+    RET i32 a
