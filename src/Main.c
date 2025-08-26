@@ -1,4 +1,4 @@
-#include "/home/codeleaded/System/Static/Library/IR.h"
+#include "/home/codeleaded/System/Static/Library/IRRuntime.h"
 
 int main(int argc,char** argv){
     if(argc < 2){

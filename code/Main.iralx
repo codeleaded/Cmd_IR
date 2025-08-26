@@ -1,34 +1,35 @@
 // IR Code like ASM for Optimisations
 // Can be translated to other Languages
 
-extern print i32,i8*
+//from io import input str
+from io import print void,str
+//include "./code/Main.iralx"
 
-fn add i32 r,i32 a,i32 b
-    MAKE i32 c
-    ADD i32 c,a,b
-    MOV i32 r,c
-    RET
+fn add int r,int a,int b
+    make    int     c
+    add     int     c,a,b
+    ass     int     r,c
+    ret
 
-fn main i32,i32 argc,i8** argv
-    MAKE i32 a
-    MOV i32 a,0
+fn main int
+    make    int     a
+    ass     int     a,0
 
-    MAKE i32 b
-    MOV i32 a,1
+    make    int     b
+    ass     int     a,1
 
-    MAKE i32 c
+    make    int     c
 
-    MAKE i32 r
-    CALL add r,a,b
+    make    int     r
+    call    add     r,a,b
     
-    MOV i32 c,r
-    KILL r
+    ass     int     c,r
+    kill    r
 
-    CMP i32 r,0
-    JE IF0
+    je      int     IF0,r,0
 
-    CALL print ,"Hello World"
+    call    print   ,"Hello World"
 
-    TARGET IF0
+    tar     IF0
 
-    RET i32 a
+    ret     int     a

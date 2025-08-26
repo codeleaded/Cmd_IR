@@ -34,16 +34,11 @@ cleanlib:
 	rm -rf $(BIN_DIR)/*
 
 exe:
-	./$(TARGET) ./code/Main.salx ./asm/Main.asm
-
-comp:
-	nasm -f elf64 ./asm/Main.asm -o ./build/Output.o
-	ld -m elf_x86_64 ./build/Output.o -o ./build/Output
-	./build/Output; echo $$?
+	./$(TARGET) ./code/Main.iralx
 
 dg: clean
 	$(CC) $(CFLAGS) -g $(INCLUDES) ./$(SRC_DIR)/Main.c -o ./$(TARGET) $(LDFLAGS)
-	-./$(TARGET) ./code/Main.salx ./asm/Main.asm
+	-./$(TARGET) ./code/Main.iralx
 	ulimit -c unlimited
 #sudo echo "./core" > /proc/sys/kernel/core_pattern
 	gdb ./$(TARGET) ./core
