@@ -1,35 +1,36 @@
-// IR Code like ASM for Optimisations
-// Can be translated to other Languages
+{ Block - Comment }
+; IR Code like ASM for Optimisations
+; Can be translated to other Languages
 
-//from io import input str
-from io import print void,str
-//include "./code/Main.iralx"
+;from io import input str
+;from io import print void,str
+;include "./code/Script.iralx"
 
 fn add int r,int a,int b
-    make    int     c
-    add     int     c,a,b
-    ass     int     r,c
+    make    int         c
+    add     int         c,a,b
+    ass     int         r,c
     ret
 
 fn main int
-    make    int     a
-    ass     int     a,0
+    make    int         a
+    ass     int         a,0
 
-    make    int     b
-    ass     int     a,1
+    make    int         b
+    ass     int         a,1
 
-    make    int     c
+    make    int         c
 
-    make    int     r
-    call    add     r,a,b
+    make    int         r
+    call    add         r,a,b
     
-    ass     int     c,r
+    ass     int         c,r
     kill    r
 
-    je      int     IF0,r,0
+    je      int         IF0,r,0
 
-    call    print   ,"Hello World"
+    call    io.print    -,"Hello World"
 
     tar     IF0
 
-    ret     int     a
+    ret     int         a

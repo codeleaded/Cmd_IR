@@ -1,0 +1,19 @@
+
+fn fib int r,int a
+    make    int         ret1
+    make    int         p1
+    sub     int         p1,a,1
+    call    fib         ret1,p1
+    kill    p1
+
+    make    int         ret2
+    make    int         p2
+    sub     int         p2,a,2
+    call    fib         ret2,p2
+    kill    p2
+    
+    add     int         r,ret1,ret2
+    kill    ret2
+    kill    ret1
+
+    ret
