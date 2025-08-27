@@ -15,8 +15,7 @@ int main(int argc,char** argv){
     };
     IRRuntime_Function(&irr,"main",params);
 
-    //IRRuntime_PrintVariable(&irr,params + 0);
-
+    IRRuntime_PrintVariable(&irr,params + 0);
     for(int i = 0;i<sizeof(params) / sizeof(Variable) - 1;i++){
         Variable_Free(params + i);
     }

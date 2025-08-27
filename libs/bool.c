@@ -124,17 +124,17 @@ void Ex_Packer(ExternFunctionMap* Extern_Functions,Vector* funcs,Scope* s){//Vec
     TypeMap_PushContained(&s->types,funcs,
         Type_New("bool",sizeof(Boolean),OperatorInterationMap_Make((OperatorInterater[]){
             OperatorInterater_Make((CStr[]){ NULL },OperatorDefineMap_Make((OperatorDefiner[]){
-                OperatorDefiner_New(TOKEN_IR_NOT,Boolean_Handler_Not),
-                OperatorDefiner_New(TOKEN_CAST,Boolean_Handler_Cast),
-                OperatorDefiner_New(TOKEN_INIT,NULL),
-                OperatorDefiner_New(TOKEN_DESTROY,NULL),
+                OperatorDefiner_New(TOKEN_IR_NOT,   (Token(*)(void*,Token*,Vector*))Boolean_Handler_Not),
+                OperatorDefiner_New(TOKEN_CAST,     (Token(*)(void*,Token*,Vector*))Boolean_Handler_Cast),
+                OperatorDefiner_New(TOKEN_INIT,     NULL),
+                OperatorDefiner_New(TOKEN_DESTROY,  NULL),
                 OPERATORDEFINER_END
             })),
             OperatorInterater_Make((CStr[]){ "bool",NULL },OperatorDefineMap_Make((OperatorDefiner[]){
-                OperatorDefiner_New(TOKEN_IR_ASS,Boolean_Boolean_Handler_Ass),
-                OperatorDefiner_New(TOKEN_IR_EQU,Boolean_Boolean_Handler_Equ),
-                OperatorDefiner_New(TOKEN_IR_AND,Boolean_Boolean_Handler_And),
-                OperatorDefiner_New(TOKEN_IR_OR,Boolean_Boolean_Handler_Or),
+                OperatorDefiner_New(TOKEN_IR_ASS,   (Token(*)(void*,Token*,Vector*))Boolean_Boolean_Handler_Ass),
+                OperatorDefiner_New(TOKEN_IR_EQU,   (Token(*)(void*,Token*,Vector*))Boolean_Boolean_Handler_Equ),
+                OperatorDefiner_New(TOKEN_IR_AND,   (Token(*)(void*,Token*,Vector*))Boolean_Boolean_Handler_And),
+                OperatorDefiner_New(TOKEN_IR_OR,    (Token(*)(void*,Token*,Vector*))Boolean_Boolean_Handler_Or),
                 OPERATORDEFINER_END
             })),
             OPERATORINTERATER_END

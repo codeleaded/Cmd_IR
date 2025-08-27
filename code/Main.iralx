@@ -6,7 +6,7 @@
 ;from io import print void,str
 ;include "./code/Script.iralx"
 
-fn add int r int a int b
+fn add int r,int a,int b
     add     int         r,a,b
     ret
 
