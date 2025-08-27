@@ -17,13 +17,7 @@ fn main int r
     make    int         b
     ass     int         a,1
 
-    make    int         c
-
-    make    int         r
     call    add         r,a,b
-    
-    ass     int         c,r
-    kill    r
 
     je      int         IF0,r,0
 

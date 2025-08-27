@@ -7,7 +7,7 @@ int main(int argc,char** argv){
     }
 
     IRRuntime irr = IRRuntime_New(argv[1],"./bin");
-    IRRuntime_Print(&irr);
+    //IRRuntime_Print(&irr);
 
     Variable params[] = {
         Variable_Make(".RETURN","int",(Number[]){ 0LL },sizeof(Number),-1,NULL,NULL),
