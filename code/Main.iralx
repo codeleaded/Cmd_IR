@@ -2,8 +2,8 @@
 ; IR Code like ASM for Optimisations
 ; Can be translated to other Languages
 
-;from io import input str
-;from io import print void,str
+;from io import input
+from io import print
 ;include "./code/Script.iralx"
 
 fn add int r,int a,int b
@@ -27,7 +27,7 @@ fn main int r
 
     je      int         IF0,r,0
 
-    call    io.print    -,"Hello World"
+    call    io::print   "Hello World\n"
 
     tar     IF0
 

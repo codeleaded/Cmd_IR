@@ -30,14 +30,15 @@ Variable io_error(Scope* sc,CStr name,Variable* args){
 
 void Ex_Packer(ExternFunctionMap* Extern_Functions,Vector* funcs,Scope* s){//Vector<CStr>
     ExternFunctionMap_PushContained(Extern_Functions,funcs,ExternFunction_New("input",NULL,(Member[]){ 
+        Member_New("str","s"),
         MEMBER_END 
     },(void*)io_input));
     ExternFunctionMap_PushContained(Extern_Functions,funcs,ExternFunction_New("print",NULL,(Member[]){ 
-        Member_New(NULL,"s"),
+        Member_New("str","s"),
         MEMBER_END
     },(void*)io_print));
     ExternFunctionMap_PushContained(Extern_Functions,funcs,ExternFunction_New("error",NULL,(Member[]){ 
-        Member_New(NULL,"s"),
+        Member_New("str","s"),
         MEMBER_END
     },(void*)io_error));
 }
