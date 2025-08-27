@@ -2,7 +2,7 @@
 ; IR Code like ASM for Optimisations
 ; Can be translated to other Languages
 
-;from io import input
+from io import input
 from io import print
 ;include "./code/Script.iralx"
 
@@ -15,7 +15,7 @@ fn main int r
     ass     int         a,0
 
     make    int         b
-    ass     int         a,1
+    ass     int         b,1
 
     call    add         r,a,b
 
@@ -24,6 +24,4 @@ fn main int r
     call    io::print   "Hello World\n"
 
     tar     IF0
-
-    ass     int         r,a
     ret
