@@ -1,6 +1,6 @@
 #include "/home/codeleaded/System/Static/Library/AlxCallStack.h"
 #include "/home/codeleaded/System/Static/Library/AlxExternFunctions.h"
-#include "/home/codeleaded/System/Static/Library/LuaLikeDefines.h"
+#include "/home/codeleaded/System/Static/Library/IRDefines.h"
 
 Variable io_input(Scope* sc,CStr name,Variable* args){
     char buffer[1024];

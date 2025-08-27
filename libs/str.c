@@ -1,6 +1,6 @@
 #include "/home/codeleaded/System/Static/Library/AlxCallStack.h"
 #include "/home/codeleaded/System/Static/Library/AlxExternFunctions.h"
-#include "/home/codeleaded/System/Static/Library/LuaLikeDefines.h"
+#include "/home/codeleaded/System/Static/Library/IRDefines.h"
 
 CStr Implementation_StrOf(Scope* s,Token* a){
     CStr n = NULL;
@@ -118,9 +118,9 @@ void Ex_Packer(ExternFunctionMap* Extern_Functions,Vector* funcs,Scope* s){//Vec
                 OPERATORDEFINER_END
             })),
             OperatorInterater_Make((CStr[]){ "str",NULL },OperatorDefineMap_Make((OperatorDefiner[]){
-                OperatorDefiner_New(TOKEN_LUALIKE_ASS,Str_Str_Handler_Ass),
-                OperatorDefiner_New(TOKEN_LUALIKE_ADD,Str_Str_Handler_Add),
-                OperatorDefiner_New(TOKEN_LUALIKE_EQU,Str_Str_Handler_Equ),
+                OperatorDefiner_New(TOKEN_IR_ASS,Str_Str_Handler_Ass),
+                OperatorDefiner_New(TOKEN_IR_ADD,Str_Str_Handler_Add),
+                OperatorDefiner_New(TOKEN_IR_EQU,Str_Str_Handler_Equ),
                 OPERATORDEFINER_END
             })),
             OPERATORINTERATER_END

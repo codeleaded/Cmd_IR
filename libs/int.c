@@ -1,7 +1,6 @@
 #include "/home/codeleaded/System/Static/Library/AlxCallStack.h"
 #include "/home/codeleaded/System/Static/Library/AlxExternFunctions.h"
-#include "/home/codeleaded/System/Static/Library/LuaLikeDefines.h"
-//#include "/home/codeleaded/Hecke/C/Cmd_Scripter/src/LuaLike.h"
+#include "/home/codeleaded/System/Static/Library/IRDefines.h"
 
 Number Implementation_IntOf(Scope* s,Token* a){
     Number n = NUMBER_PARSE_ERROR;
@@ -194,23 +193,23 @@ void Ex_Packer(ExternFunctionMap* Extern_Functions,Vector* funcs,Scope* s){//Vec
     TypeMap_PushContained(&s->types,funcs,
         Type_New("int",8,OperatorInterationMap_Make((OperatorInterater[]){
             OperatorInterater_Make((CStr[]){ NULL },OperatorDefineMap_Make((OperatorDefiner[]){
-                OperatorDefiner_New(TOKEN_LUALIKE_NEG,Int_Int_Handler_Neg),
+                OperatorDefiner_New(TOKEN_IR_NEG,Int_Int_Handler_Neg),
                 OperatorDefiner_New(TOKEN_CAST,Int_Handler_Cast),
                 OperatorDefiner_New(TOKEN_INIT,NULL),
                 OperatorDefiner_New(TOKEN_DESTROY,NULL),
                 OPERATORDEFINER_END
             })),
             OperatorInterater_Make((CStr[]){ "int",NULL },OperatorDefineMap_Make((OperatorDefiner[]){
-                OperatorDefiner_New(TOKEN_LUALIKE_ASS,Int_Int_Handler_Ass),
-                OperatorDefiner_New(TOKEN_LUALIKE_ADD,Int_Int_Handler_Add),
-                OperatorDefiner_New(TOKEN_LUALIKE_SUB,Int_Int_Handler_Sub),
-                OperatorDefiner_New(TOKEN_LUALIKE_MUL,Int_Int_Handler_Mul),
-                OperatorDefiner_New(TOKEN_LUALIKE_DIV,Int_Int_Handler_Div),
-                OperatorDefiner_New(TOKEN_LUALIKE_EQU,Int_Int_Handler_Equ),
-                OperatorDefiner_New(TOKEN_LUALIKE_LES,Int_Int_Handler_Les),
-                OperatorDefiner_New(TOKEN_LUALIKE_GRT,Int_Int_Handler_Grt),
-                OperatorDefiner_New(TOKEN_LUALIKE_LEQ,Int_Int_Handler_Leq),
-                OperatorDefiner_New(TOKEN_LUALIKE_GRQ,Int_Int_Handler_Grq),
+                OperatorDefiner_New(TOKEN_IR_ASS,Int_Int_Handler_Ass),
+                OperatorDefiner_New(TOKEN_IR_ADD,Int_Int_Handler_Add),
+                OperatorDefiner_New(TOKEN_IR_SUB,Int_Int_Handler_Sub),
+                OperatorDefiner_New(TOKEN_IR_MUL,Int_Int_Handler_Mul),
+                OperatorDefiner_New(TOKEN_IR_DIV,Int_Int_Handler_Div),
+                OperatorDefiner_New(TOKEN_IR_EQU,Int_Int_Handler_Equ),
+                OperatorDefiner_New(TOKEN_IR_LES,Int_Int_Handler_Les),
+                OperatorDefiner_New(TOKEN_IR_GRT,Int_Int_Handler_Grt),
+                OperatorDefiner_New(TOKEN_IR_LEQ,Int_Int_Handler_Leq),
+                OperatorDefiner_New(TOKEN_IR_GRQ,Int_Int_Handler_Grq),
                 OPERATORDEFINER_END
             })),
             OPERATORINTERATER_END

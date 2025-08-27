@@ -7,12 +7,10 @@
 ;include "./code/Script.iralx"
 
 fn add int r,int a,int b
-    make    int         c
-    add     int         c,a,b
-    ass     int         r,c
+    add     int         r,a,b
     ret
 
-fn main int
+fn main int r
     make    int         a
     ass     int         a,0
 
@@ -33,4 +31,5 @@ fn main int
 
     tar     IF0
 
-    ret     int         a
+    ass     int         r,a
+    ret
