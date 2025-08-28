@@ -353,7 +353,7 @@ Token Int_Handler_Cast(IR* ir,Token* op,Vector* args){
 
 void Ex_Packer(ExternFunctionMap* Extern_Functions,Vector* funcs,IR* ir){//Vector<CStr>
     TypeMap_PushContained(&ir->types,funcs,
-        Type_New("int",8,OperatorInterationMap_Make((OperatorInterater[]){
+        Type_New("int",sizeof(Number),OperatorInterationMap_Make((OperatorInterater[]){
             OperatorInterater_Make((CStr[]){ NULL },OperatorDefineMap_Make((OperatorDefiner[]){
                 OperatorDefiner_New(TOKEN_IR_NEG,   (Token(*)(void*,Token*,Vector*))Int_Handler_Neg1),
                 OperatorDefiner_New(TOKEN_CAST,     (Token(*)(void*,Token*,Vector*))Int_Handler_Cast),

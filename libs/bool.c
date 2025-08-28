@@ -76,132 +76,6 @@ Token Boolean_Boolean_Handler_Equ3(IR* ir,Token* op,Vector* args){
     return Token_Move(TOKEN_BOOL,resstr);
 }
 
-Token Int_Int_Handler_Equ3(IR* ir,Token* op,Vector* args){
-    Token* a = (Token*)Vector_Get(args,0);
-    Token* b = (Token*)Vector_Get(args,1);
-    Token* c = (Token*)Vector_Get(args,2);
-
-    IR_InfoHandler(ir,"equ int %s %s %s",a->str,b->str,c->str);
-
-    Number n2 = IR_Impl_Int(ir,b);
-    Number n3 = IR_Impl_Int(ir,c);
-    Boolean res = n2 == n3;
-    if(a->tt==TOKEN_STRING){
-        Variable* a_var = VariableMap_Find(&ir->vars,a->str);
-        if(a_var){
-            Variable_PrepairFor(a_var,sizeof(Boolean),"bool",NULL,NULL);
-            Variable_SetTo(a_var,(Boolean[]){ res });
-        }else{
-            IR_ErrorHandler(ir,"Equ: variable %s doesn't exist!",a->str);
-        }
-    }else{
-        IR_ErrorHandler(ir,"Equ: arg1 should be a variable, but is %s!",a->str);
-    }
-
-    char* resstr = Boolean_Get(res);
-    return Token_Move(TOKEN_BOOL,resstr);
-}
-Token Int_Int_Handler_Les3(IR* ir,Token* op,Vector* args){
-    Token* a = (Token*)Vector_Get(args,0);
-    Token* b = (Token*)Vector_Get(args,1);
-    Token* c = (Token*)Vector_Get(args,2);
-
-    IR_InfoHandler(ir,"les int %s %s %s",a->str,b->str,c->str);
-
-    Number n2 = IR_Impl_Int(ir,b);
-    Number n3 = IR_Impl_Int(ir,c);
-    Boolean res = n2 < n3;
-    if(a->tt==TOKEN_STRING){
-        Variable* a_var = VariableMap_Find(&ir->vars,a->str);
-        if(a_var){
-            Variable_PrepairFor(a_var,sizeof(Boolean),"bool",NULL,NULL);
-            Variable_SetTo(a_var,(Boolean[]){ res });
-        }else{
-            IR_ErrorHandler(ir,"Les: variable %s doesn't exist!",a->str);
-        }
-    }else{
-        IR_ErrorHandler(ir,"Les: arg1 should be a variable, but is %s!",a->str);
-    }
-
-    char* resstr = Boolean_Get(res);
-    return Token_Move(TOKEN_BOOL,resstr);
-}
-Token Int_Int_Handler_Grt3(IR* ir,Token* op,Vector* args){
-    Token* a = (Token*)Vector_Get(args,0);
-    Token* b = (Token*)Vector_Get(args,1);
-    Token* c = (Token*)Vector_Get(args,2);
-
-    IR_InfoHandler(ir,"grt int %s %s %s",a->str,b->str,c->str);
-
-    Number n2 = IR_Impl_Int(ir,b);
-    Number n3 = IR_Impl_Int(ir,c);
-    Boolean res = n2 > n3;
-    if(a->tt==TOKEN_STRING){
-        Variable* a_var = VariableMap_Find(&ir->vars,a->str);
-        if(a_var){
-            Variable_PrepairFor(a_var,sizeof(Boolean),"bool",NULL,NULL);
-            Variable_SetTo(a_var,(Boolean[]){ res });
-        }else{
-            IR_ErrorHandler(ir,"Grt: variable %s doesn't exist!",a->str);
-        }
-    }else{
-        IR_ErrorHandler(ir,"Grt: arg1 should be a variable, but is %s!",a->str);
-    }
-
-    char* resstr = Boolean_Get(res);
-    return Token_Move(TOKEN_BOOL,resstr);
-}
-Token Int_Int_Handler_Leq3(IR* ir,Token* op,Vector* args){
-    Token* a = (Token*)Vector_Get(args,0);
-    Token* b = (Token*)Vector_Get(args,1);
-    Token* c = (Token*)Vector_Get(args,2);
-
-    IR_InfoHandler(ir,"leq int %s %s %s",a->str,b->str,c->str);
-
-    Number n2 = IR_Impl_Int(ir,b);
-    Number n3 = IR_Impl_Int(ir,c);
-    Boolean res = n2 <= n3;
-    if(a->tt==TOKEN_STRING){
-        Variable* a_var = VariableMap_Find(&ir->vars,a->str);
-        if(a_var){
-            Variable_PrepairFor(a_var,sizeof(Boolean),"bool",NULL,NULL);
-            Variable_SetTo(a_var,(Boolean[]){ res });
-        }else{
-            IR_ErrorHandler(ir,"Leq: variable %s doesn't exist!",a->str);
-        }
-    }else{
-        IR_ErrorHandler(ir,"Leq: arg1 should be a variable, but is %s!",a->str);
-    }
-
-    char* resstr = Boolean_Get(res);
-    return Token_Move(TOKEN_BOOL,resstr);
-}
-Token Int_Int_Handler_Grq3(IR* ir,Token* op,Vector* args){
-    Token* a = (Token*)Vector_Get(args,0);
-    Token* b = (Token*)Vector_Get(args,1);
-    Token* c = (Token*)Vector_Get(args,2);
-
-    IR_InfoHandler(ir,"grq int %s %s %s",a->str,b->str,c->str);
-
-    Number n2 = IR_Impl_Int(ir,b);
-    Number n3 = IR_Impl_Int(ir,c);
-    Boolean res = n2 >= n3;
-    if(a->tt==TOKEN_STRING){
-        Variable* a_var = VariableMap_Find(&ir->vars,a->str);
-        if(a_var){
-            Variable_PrepairFor(a_var,sizeof(Boolean),"bool",NULL,NULL);
-            Variable_SetTo(a_var,(Boolean[]){ res });
-        }else{
-            IR_ErrorHandler(ir,"Grq: variable %s doesn't exist!",a->str);
-        }
-    }else{
-        IR_ErrorHandler(ir,"Grq: arg1 should be a variable, but is %s!",a->str);
-    }
-
-    char* resstr = Boolean_Get(res);
-    return Token_Move(TOKEN_BOOL,resstr);
-}
-
 Token Boolean_Boolean_Handler_And2(IR* ir,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
     Token* b = (Token*)Vector_Get(args,1);
@@ -357,6 +231,285 @@ Token Boolean_Handler_Cast(IR* ir,Token* op,Vector* args){
     return Token_Move(TOKEN_CONSTSTRING_DOUBLE,resstr);
 }
 
+
+Token Int_Int_Handler_Equ3(IR* ir,Token* op,Vector* args){
+    Token* a = (Token*)Vector_Get(args,0);
+    Token* b = (Token*)Vector_Get(args,1);
+    Token* c = (Token*)Vector_Get(args,2);
+
+    IR_InfoHandler(ir,"equ int %s %s %s",a->str,b->str,c->str);
+
+    Number n2 = IR_Impl_Int(ir,b);
+    Number n3 = IR_Impl_Int(ir,c);
+    Boolean res = n2 == n3;
+    if(a->tt==TOKEN_STRING){
+        Variable* a_var = VariableMap_Find(&ir->vars,a->str);
+        if(a_var){
+            Variable_PrepairFor(a_var,sizeof(Boolean),"bool",NULL,NULL);
+            Variable_SetTo(a_var,(Boolean[]){ res });
+        }else{
+            IR_ErrorHandler(ir,"Equ: variable %s doesn't exist!",a->str);
+        }
+    }else{
+        IR_ErrorHandler(ir,"Equ: arg1 should be a variable, but is %s!",a->str);
+    }
+
+    char* resstr = Boolean_Get(res);
+    return Token_Move(TOKEN_BOOL,resstr);
+}
+Token Int_Int_Handler_Les3(IR* ir,Token* op,Vector* args){
+    Token* a = (Token*)Vector_Get(args,0);
+    Token* b = (Token*)Vector_Get(args,1);
+    Token* c = (Token*)Vector_Get(args,2);
+
+    IR_InfoHandler(ir,"les int %s %s %s",a->str,b->str,c->str);
+
+    Number n2 = IR_Impl_Int(ir,b);
+    Number n3 = IR_Impl_Int(ir,c);
+    Boolean res = n2 < n3;
+    if(a->tt==TOKEN_STRING){
+        Variable* a_var = VariableMap_Find(&ir->vars,a->str);
+        if(a_var){
+            Variable_PrepairFor(a_var,sizeof(Boolean),"bool",NULL,NULL);
+            Variable_SetTo(a_var,(Boolean[]){ res });
+        }else{
+            IR_ErrorHandler(ir,"Les: variable %s doesn't exist!",a->str);
+        }
+    }else{
+        IR_ErrorHandler(ir,"Les: arg1 should be a variable, but is %s!",a->str);
+    }
+
+    char* resstr = Boolean_Get(res);
+    return Token_Move(TOKEN_BOOL,resstr);
+}
+Token Int_Int_Handler_Grt3(IR* ir,Token* op,Vector* args){
+    Token* a = (Token*)Vector_Get(args,0);
+    Token* b = (Token*)Vector_Get(args,1);
+    Token* c = (Token*)Vector_Get(args,2);
+
+    IR_InfoHandler(ir,"grt int %s %s %s",a->str,b->str,c->str);
+
+    Number n2 = IR_Impl_Int(ir,b);
+    Number n3 = IR_Impl_Int(ir,c);
+    Boolean res = n2 > n3;
+    if(a->tt==TOKEN_STRING){
+        Variable* a_var = VariableMap_Find(&ir->vars,a->str);
+        if(a_var){
+            Variable_PrepairFor(a_var,sizeof(Boolean),"bool",NULL,NULL);
+            Variable_SetTo(a_var,(Boolean[]){ res });
+        }else{
+            IR_ErrorHandler(ir,"Grt: variable %s doesn't exist!",a->str);
+        }
+    }else{
+        IR_ErrorHandler(ir,"Grt: arg1 should be a variable, but is %s!",a->str);
+    }
+
+    char* resstr = Boolean_Get(res);
+    return Token_Move(TOKEN_BOOL,resstr);
+}
+Token Int_Int_Handler_Leq3(IR* ir,Token* op,Vector* args){
+    Token* a = (Token*)Vector_Get(args,0);
+    Token* b = (Token*)Vector_Get(args,1);
+    Token* c = (Token*)Vector_Get(args,2);
+
+    IR_InfoHandler(ir,"leq int %s %s %s",a->str,b->str,c->str);
+
+    Number n2 = IR_Impl_Int(ir,b);
+    Number n3 = IR_Impl_Int(ir,c);
+    Boolean res = n2 <= n3;
+    if(a->tt==TOKEN_STRING){
+        Variable* a_var = VariableMap_Find(&ir->vars,a->str);
+        if(a_var){
+            Variable_PrepairFor(a_var,sizeof(Boolean),"bool",NULL,NULL);
+            Variable_SetTo(a_var,(Boolean[]){ res });
+        }else{
+            IR_ErrorHandler(ir,"Leq: variable %s doesn't exist!",a->str);
+        }
+    }else{
+        IR_ErrorHandler(ir,"Leq: arg1 should be a variable, but is %s!",a->str);
+    }
+
+    char* resstr = Boolean_Get(res);
+    return Token_Move(TOKEN_BOOL,resstr);
+}
+Token Int_Int_Handler_Grq3(IR* ir,Token* op,Vector* args){
+    Token* a = (Token*)Vector_Get(args,0);
+    Token* b = (Token*)Vector_Get(args,1);
+    Token* c = (Token*)Vector_Get(args,2);
+
+    IR_InfoHandler(ir,"grq int %s %s %s",a->str,b->str,c->str);
+
+    Number n2 = IR_Impl_Int(ir,b);
+    Number n3 = IR_Impl_Int(ir,c);
+    Boolean res = n2 >= n3;
+    if(a->tt==TOKEN_STRING){
+        Variable* a_var = VariableMap_Find(&ir->vars,a->str);
+        if(a_var){
+            Variable_PrepairFor(a_var,sizeof(Boolean),"bool",NULL,NULL);
+            Variable_SetTo(a_var,(Boolean[]){ res });
+        }else{
+            IR_ErrorHandler(ir,"Grq: variable %s doesn't exist!",a->str);
+        }
+    }else{
+        IR_ErrorHandler(ir,"Grq: arg1 should be a variable, but is %s!",a->str);
+    }
+
+    char* resstr = Boolean_Get(res);
+    return Token_Move(TOKEN_BOOL,resstr);
+}
+
+Token Float_Float_Handler_Equ3(IR* ir,Token* op,Vector* args){
+    Token* a = (Token*)Vector_Get(args,0);
+    Token* b = (Token*)Vector_Get(args,1);
+    Token* c = (Token*)Vector_Get(args,2);
+
+    IR_InfoHandler(ir,"equ float %s %s %s",a->str,b->str,c->str);
+
+    Double n2 = IR_Impl_Int(ir,b);
+    Double n3 = IR_Impl_Int(ir,c);
+    Boolean res = n2 == n3;
+    if(a->tt==TOKEN_STRING){
+        Variable* a_var = VariableMap_Find(&ir->vars,a->str);
+        if(a_var){
+            Variable_PrepairFor(a_var,sizeof(Boolean),"bool",NULL,NULL);
+            Variable_SetTo(a_var,(Boolean[]){ res });
+        }else{
+            IR_ErrorHandler(ir,"Equ: variable %s doesn't exist!",a->str);
+        }
+    }else{
+        IR_ErrorHandler(ir,"Equ: arg1 should be a variable, but is %s!",a->str);
+    }
+
+    char* resstr = Boolean_Get(res);
+    return Token_Move(TOKEN_BOOL,resstr);
+}
+Token Float_Float_Handler_Les3(IR* ir,Token* op,Vector* args){
+    Token* a = (Token*)Vector_Get(args,0);
+    Token* b = (Token*)Vector_Get(args,1);
+    Token* c = (Token*)Vector_Get(args,2);
+
+    IR_InfoHandler(ir,"les float %s %s %s",a->str,b->str,c->str);
+
+    Double n2 = IR_Impl_Int(ir,b);
+    Double n3 = IR_Impl_Int(ir,c);
+    Boolean res = n2 < n3;
+    if(a->tt==TOKEN_STRING){
+        Variable* a_var = VariableMap_Find(&ir->vars,a->str);
+        if(a_var){
+            Variable_PrepairFor(a_var,sizeof(Boolean),"bool",NULL,NULL);
+            Variable_SetTo(a_var,(Boolean[]){ res });
+        }else{
+            IR_ErrorHandler(ir,"Les: variable %s doesn't exist!",a->str);
+        }
+    }else{
+        IR_ErrorHandler(ir,"Les: arg1 should be a variable, but is %s!",a->str);
+    }
+
+    char* resstr = Boolean_Get(res);
+    return Token_Move(TOKEN_BOOL,resstr);
+}
+Token Float_Float_Handler_Grt3(IR* ir,Token* op,Vector* args){
+    Token* a = (Token*)Vector_Get(args,0);
+    Token* b = (Token*)Vector_Get(args,1);
+    Token* c = (Token*)Vector_Get(args,2);
+
+    IR_InfoHandler(ir,"grt float %s %s %s",a->str,b->str,c->str);
+
+    Double n2 = IR_Impl_Int(ir,b);
+    Double n3 = IR_Impl_Int(ir,c);
+    Boolean res = n2 > n3;
+    if(a->tt==TOKEN_STRING){
+        Variable* a_var = VariableMap_Find(&ir->vars,a->str);
+        if(a_var){
+            Variable_PrepairFor(a_var,sizeof(Boolean),"bool",NULL,NULL);
+            Variable_SetTo(a_var,(Boolean[]){ res });
+        }else{
+            IR_ErrorHandler(ir,"Grt: variable %s doesn't exist!",a->str);
+        }
+    }else{
+        IR_ErrorHandler(ir,"Grt: arg1 should be a variable, but is %s!",a->str);
+    }
+
+    char* resstr = Boolean_Get(res);
+    return Token_Move(TOKEN_BOOL,resstr);
+}
+Token Float_Float_Handler_Leq3(IR* ir,Token* op,Vector* args){
+    Token* a = (Token*)Vector_Get(args,0);
+    Token* b = (Token*)Vector_Get(args,1);
+    Token* c = (Token*)Vector_Get(args,2);
+
+    IR_InfoHandler(ir,"leq float %s %s %s",a->str,b->str,c->str);
+
+    Double n2 = IR_Impl_Int(ir,b);
+    Double n3 = IR_Impl_Int(ir,c);
+    Boolean res = n2 <= n3;
+    if(a->tt==TOKEN_STRING){
+        Variable* a_var = VariableMap_Find(&ir->vars,a->str);
+        if(a_var){
+            Variable_PrepairFor(a_var,sizeof(Boolean),"bool",NULL,NULL);
+            Variable_SetTo(a_var,(Boolean[]){ res });
+        }else{
+            IR_ErrorHandler(ir,"Leq: variable %s doesn't exist!",a->str);
+        }
+    }else{
+        IR_ErrorHandler(ir,"Leq: arg1 should be a variable, but is %s!",a->str);
+    }
+
+    char* resstr = Boolean_Get(res);
+    return Token_Move(TOKEN_BOOL,resstr);
+}
+Token Float_Float_Handler_Grq3(IR* ir,Token* op,Vector* args){
+    Token* a = (Token*)Vector_Get(args,0);
+    Token* b = (Token*)Vector_Get(args,1);
+    Token* c = (Token*)Vector_Get(args,2);
+
+    IR_InfoHandler(ir,"grq float %s %s %s",a->str,b->str,c->str);
+
+    Double n2 = IR_Impl_Int(ir,b);
+    Double n3 = IR_Impl_Int(ir,c);
+    Boolean res = n2 >= n3;
+    if(a->tt==TOKEN_STRING){
+        Variable* a_var = VariableMap_Find(&ir->vars,a->str);
+        if(a_var){
+            Variable_PrepairFor(a_var,sizeof(Boolean),"bool",NULL,NULL);
+            Variable_SetTo(a_var,(Boolean[]){ res });
+        }else{
+            IR_ErrorHandler(ir,"Grq: variable %s doesn't exist!",a->str);
+        }
+    }else{
+        IR_ErrorHandler(ir,"Grq: arg1 should be a variable, but is %s!",a->str);
+    }
+
+    char* resstr = Boolean_Get(res);
+    return Token_Move(TOKEN_BOOL,resstr);
+}
+
+Token Str_Str_Handler_Equ3(IR* ir,Token* op,Vector* args){
+    Token* a = (Token*)Vector_Get(args,0);
+    Token* b = (Token*)Vector_Get(args,1);
+    Token* c = (Token*)Vector_Get(args,2);
+
+    IR_InfoHandler(ir,"equ str %s %s %s",a->str,b->str,c->str);
+
+    CStr n2 = IR_Impl_Str(ir,b);
+    CStr n3 = IR_Impl_Str(ir,c);
+    Boolean res = CStr_Cmp(n2,n3);
+    if(a->tt==TOKEN_STRING){
+        Variable* a_var = VariableMap_Find(&ir->vars,a->str);
+        if(a_var){
+            Variable_PrepairFor(a_var,sizeof(Boolean),"bool",NULL,NULL);
+            Variable_SetTo(a_var,(Boolean[]){ res });
+        }else{
+            IR_ErrorHandler(ir,"Equ: variable %s doesn't exist!",a->str);
+        }
+    }else{
+        IR_ErrorHandler(ir,"Equ: arg1 should be a variable, but is %s!",a->str);
+    }
+
+    char* resstr = Boolean_Get(res);
+    return Token_Move(TOKEN_BOOL,resstr);
+}
+
 void Ex_Packer(ExternFunctionMap* Extern_Functions,Vector* funcs,IR* ir){//Vector<CStr>
     TypeMap_PushContained(&ir->types,funcs,
         Type_New("bool",sizeof(Boolean),OperatorInterationMap_Make((OperatorInterater[]){
@@ -386,6 +539,17 @@ void Ex_Packer(ExternFunctionMap* Extern_Functions,Vector* funcs,IR* ir){//Vecto
                 OperatorDefiner_New(TOKEN_IR_GRT,   (Token(*)(void*,Token*,Vector*))Int_Int_Handler_Grt3),
                 OperatorDefiner_New(TOKEN_IR_LEQ,   (Token(*)(void*,Token*,Vector*))Int_Int_Handler_Leq3),
                 OperatorDefiner_New(TOKEN_IR_GRQ,   (Token(*)(void*,Token*,Vector*))Int_Int_Handler_Grq3),
+                OPERATORDEFINER_END
+            })),
+            OperatorInterater_Make((CStr[]){ "float","float",NULL },OperatorDefineMap_Make((OperatorDefiner[]){
+                OperatorDefiner_New(TOKEN_IR_EQU,   (Token(*)(void*,Token*,Vector*))Float_Float_Handler_Equ3),
+                OperatorDefiner_New(TOKEN_IR_LES,   (Token(*)(void*,Token*,Vector*))Float_Float_Handler_Les3),
+                OperatorDefiner_New(TOKEN_IR_GRT,   (Token(*)(void*,Token*,Vector*))Float_Float_Handler_Grt3),
+                OperatorDefiner_New(TOKEN_IR_LEQ,   (Token(*)(void*,Token*,Vector*))Float_Float_Handler_Leq3),
+                OperatorDefiner_New(TOKEN_IR_GRQ,   (Token(*)(void*,Token*,Vector*))Float_Float_Handler_Grq3),
+                OPERATORDEFINER_END
+            })),OperatorInterater_Make((CStr[]){ "str","str",NULL },OperatorDefineMap_Make((OperatorDefiner[]){
+                OperatorDefiner_New(TOKEN_IR_EQU,   (Token(*)(void*,Token*,Vector*))Str_Str_Handler_Equ3),
                 OPERATORDEFINER_END
             })),
             OPERATORINTERATER_END
