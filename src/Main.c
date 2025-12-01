@@ -6,7 +6,7 @@ int main(int argc,char** argv){
         return 0;
     }
 
-    IRRuntime irr = IRRuntime_New(argv[1],"./bin");
+    IRRuntime irr = IRRuntime_New("./code/Main.iralx","./bin");
     //IRRuntime_Print(&irr);
 
     Variable params[] = {
