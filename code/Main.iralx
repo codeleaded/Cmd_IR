@@ -11,6 +11,7 @@ fn add int r,int a,int b
     ret
 
 fn main int r
+    ;cast   str         b,a
     make    int         a
     ass     int         a,1
 

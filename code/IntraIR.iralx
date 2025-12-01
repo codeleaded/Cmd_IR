@@ -1,0 +1,17 @@
+;|
+;| IntraIR by codeleaded
+;|
+
+
+fn main int VAR.RETURN0
+    make	int	r
+    ass		int	r,10
+    make	int	VAR.STACK0
+    add		int	VAR.STACK0,r,5
+    ass		int	VAR.RETURN0,VAR.STACK0
+    kill	VAR.STACK0
+    kill	r
+    ret
+    kill	r
+    ret
+
