@@ -1,0 +1,4 @@
+; IR Code like ASM for Optimisations
+; Can be translated to other Languages
+;define %CSTR.0 "Hello World" 10 0
+
