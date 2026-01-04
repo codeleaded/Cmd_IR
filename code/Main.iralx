@@ -1,10 +1,4 @@
 
-define i32 @main
-    alloca  i32         %a
-    store   i32         %a 1
-    alloca  i32         %b
-    store   i32         %b 2
-    load    i32         %1 %a
-    load    i32         %2 %b
-    call    add         %3 %1 %2
-    ret i32 %3
+define i16 @main
+    ass i16 %0 0
+    ret i16 %0

@@ -2,3 +2,18 @@
 ; Can be translated to other Languages
 ;define %CSTR.0 "Hello World" 10 0
 
+; i16 main(){
+;     i16 a = 1;
+;     i16 b = 2;
+;     return a + b;
+; }
+
+define i16 @main
+    alloca  i16         %a
+    store   i16         %a 1
+    alloca  i16         %b
+    store   i16         %b 2
+    load    i16         %1 %a
+    load    i16         %2 %b
+    add     i16         %3 %1 %2
+    ret i16 %3
