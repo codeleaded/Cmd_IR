@@ -10,6 +10,14 @@ Token Pointer_Pointer_Handler_Ass(IRVM* ir,Token* op,Vector* args){
 
     return Token_Move(TOKEN_IRVM_SSA,NULL);
 }
+Token Pointer_Handler_Ret(IRVM* ir,Token* op,Vector* args){
+    Token* a = (Token*)Vector_Get(args,0);
+
+    IRVM_InfoHandler(ir,"ret Pointer %s",a->str);
+
+    return Token_Move(TOKEN_IRVM_SSA,NULL);
+}
+
 Token Pointer_Handler_Cast(IRVM* ir,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
 
@@ -20,6 +28,7 @@ void Ex_Packer(ExternFunctionMap* Extern_Functions,Vector* funcs,IRVM* ir){//Vec
     TypeMap_PushContained(&ir->types,funcs,
         Type_New("?*",sizeof(void*),OperatorInterationMap_Make((OperatorInterater[]){
             OperatorInterater_Make((CStr[]){ NULL },OperatorDefineMap_Make((OperatorDefiner[]){
+                OperatorDefiner_New(TOKEN_IRVM_RET, (Token(*)(void*,Token*,Vector*))Pointer_Handler_Ret),
                 OperatorDefiner_New(TOKEN_CAST,     (Token(*)(void*,Token*,Vector*))Pointer_Handler_Cast),
                 OperatorDefiner_New(TOKEN_INIT,     NULL),
                 OperatorDefiner_New(TOKEN_DESTROY,  NULL),

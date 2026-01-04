@@ -8,9 +8,8 @@ int main(int argc,char** argv){
 
     IRVM irr = IRVM_New("./bin");
     IRVM_Script(&irr,"./code/Main." IRVM_TYPE);
-    IRVM_Print(&irr);
-    //IRVM_Build(&irr);
-    //IRVM_Write(&irr,"./code/Main.asm");
+    //IRVM_Print(&irr);
+    IRVM_Build(&irr,"./asm/Main.asm");
     IRVM_Free(&irr);
     return 0;
 }

@@ -1,4 +1,4 @@
 
 define i16 @main
-    ass i16 %0 0
+    ass i16 %0 68
     ret i16 %0

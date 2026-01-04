@@ -2,6 +2,10 @@
 ; Can be translated to other Languages
 ;define %CSTR.0 "Hello World" 10 0
 
+extern i16 @add1
+global i16 @add2
+    ret i16 69
+
 ; i16 main(){
 ;     i16 a = 1;
 ;     i16 b = 2;
@@ -17,3 +21,24 @@ define i16 @main
     load    i16         %2 %b
     add     i16         %3 %1 %2
     ret i16 %3
+
+
+define i32 @add i32 %a i32 %b
+    add     i32         %0 %a %b
+    ret     i32         %0
+
+define i32 @main
+    alloca  i32         %a
+    store   i32         %a 1
+    alloca  i32         %b
+    store   i32         %b 2
+    
+    load    i32         %1 %a
+    load    i32         %2 %b
+    call    @add        %3 %1 %2
+
+    equ     i32         %4 %1 %2
+    br      i32         IF0 %4
+    call    @io.print   %CSTR.0
+IF0:
+    ret i32 %3
