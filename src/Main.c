@@ -2,7 +2,7 @@
 
 int main(int argc,char** argv){
     //if(argc < 2){
-    //    printf("[ASMRuntime]: Arguments -> Usage: irr <.asmalx>\n");
+    //    printf("[IRVM]: Arguments -> Usage: irvm <.iralx>\n");
     //    return 0;
     //}
 

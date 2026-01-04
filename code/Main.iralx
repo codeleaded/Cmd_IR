@@ -1,5 +1,5 @@
 
-define @main i32* %.RET
+define i32 @main
     alloca  i32         %a
     store   i32         %a 1
     alloca  i32         %b
@@ -7,5 +7,4 @@ define @main i32* %.RET
     load    i32         %1 %a
     load    i32         %2 %b
     call    add         %3 %1 %2
-    store   i32         %.RET %3
-    ret
+    ret i32 %3
